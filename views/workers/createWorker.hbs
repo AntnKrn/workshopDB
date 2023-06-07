@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление работника</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Добавление работника</h1>
+
+     <form method="POST">
+
+        <label>ФИО</label><br>
+        <input name="fullname" type="text" class="field"/><br><br>
+
+        <label>Номер телефона</label><br>
+        <input name="phoneNumber" type="text" class="field"/><br><br>
+
+        <label>Адресс</label><br>
+        <input name="address" type="text" class="field"/><br><br>
+
+        <label>Почта</label><br>
+        <input name="email" type="text" class="field"/><br><br>
+
+        <label>Дата начала работы</label><br>
+        <input name="date_start" type="date" class="field"/><br><br>
+
+        <label>Количество детей</label><br>
+        <input name="children" type="number" class="field"/><br><br>
+
+        <input type="submit" value="Добавить" />
+     </form>
+         <a href="workers">К списку работников</a>
+</body>
+<html>

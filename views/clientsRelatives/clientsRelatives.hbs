@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список родственников</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список родственников</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createClientsRelative">Добавить родственника</a></p>
+    <input type="text" id="search" placeholder="Поиск по ФИО">
+    <table>
+        <thead><tr><th>ФИО родственника</th><th>ФИО</th><th>Номер телефона</th><th>Тип</th><th></th></tr></thead>
+        <tbody>
+        {{#each clientsRelatives}}
+            <tr class="elastic">
+                <td>{{this.id_ClientsRelatives}}</td>
+                <td>{{this.fullnameRelative}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.type}}</td>
+                <td>
+                    <a href="editClientsRelative/{{this.id_ClientsRelatives}}">Edit</a>
+                    <form action="deleteClientsRelative/{{this.id_ClientsRelatives}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete" />
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <script src="/views/clientsRelatives/liveSearch.js"></script>
+</body>
+<html>

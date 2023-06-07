@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование клиента</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование клиента</h1>
+     <form action="/editClient" method="POST">
+        <input type="hidden" name="id_Client" value="{{clients.id_Client}}"/>
+
+        <label>ФИО</label><br>
+        <input name="fullname" type="text" class="field" value="{{clients.fullname}}"/><br><br>
+
+        <label>Номер телефона</label><br>
+        <input name="phoneNumber" type="text" class="field" value="{{clients.phoneNumber}}"/><br><br>
+
+        <label>Адресс</label><br>
+        <input name="address" type="text" class="field" value="{{clients.address}}"/><br><br>
+
+        <label>Почта</label><br>
+        <input name="email" type="text" class="field" value="{{clients.email}}"/><br><br>
+
+        <label>День рождения</label><br>
+        <input name="birthday" type="date" id="birthday" value="{{clients.birthday}}"/><br><br>
+
+        <label>Номер родственника</label><br>
+        <input name="id_Relative" type="number" value="{{clients.id_Relative}}"/><br><br>
+
+        <label>Номер рейтинга</label><br>
+        <input name="id_Rating" type="number" class="field" value="{{clients.id_Rating}}"/><br><br>
+
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="../clients">К списку клиентов</a>
+    <script>
+        let birthday = new Date(("{{clients.birthday}}"));
+        let year = birthday.toLocaleString("default", { year: "numeric" });
+        let month = birthday.toLocaleString("default", { month: "2-digit" });
+        let day = birthday.toLocaleString("default", { day: "2-digit" });
+        document.getElementById('birthday').value = `${year}-${month}-${day}`;
+    </script> 
+</body>

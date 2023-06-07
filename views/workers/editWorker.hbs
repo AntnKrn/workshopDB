@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование работника</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование работника</h1>
+     <form action="/editWorker" method="POST">
+        <input type="hidden" name="id_Worker" value="{{workers.id_Worker}}"/>
+
+        <label>ФИО</label><br>
+        <input name="fullname" type="text" class="field" value="{{workers.fullname}}"/><br><br>
+
+        <label>Номер телефона</label><br>
+        <input name="phoneNumber" type="text" class="field" value="{{workers.phoneNumber}}"/><br><br>
+
+        <label>Адресс</label><br>
+        <input name="address" type="text" class="field" value="{{workers.address}}"/><br><br>
+
+        <label>Почта</label><br>
+        <input name="email" type="text" class="field" value="{{workers.email}}"/><br><br>
+
+        <label>Дата начала работы</label><br>
+        <input name="date_start" type="date" id="dateStart" value="{{workers.date_start}}"/><br><br>
+
+        <label>Количество детей</label><br>
+        <input name="children" type="text" value="{{workers.children}}"/><br><br>
+
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="../workers">К списку работников</a>
+    <script>
+        let dateStart = new Date(("{{workers.date_start}}"));
+        let year = dateStart.toLocaleString("default", { year: "numeric" });
+        let month = dateStart.toLocaleString("default", { month: "2-digit" });
+        let day = dateStart.toLocaleString("default", { day: "2-digit" });
+        document.getElementById('dateStart').value = `${year}-${month}-${day}`;
+    </script> 
+</body>

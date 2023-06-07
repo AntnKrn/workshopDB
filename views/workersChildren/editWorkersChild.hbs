@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование ребенка</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование ребенка</h1>
+     <form action="/editWorkersChild" method="POST">
+        <input type="hidden" name="id_WorkersChildren" value="{{workersChildren.id_WorkersChildren}}"/>
+
+        <label>ФИО</label><br>
+        <input name="fullname" type="text" class="field" value="{{workersChildren.fullname}}"/><br><br>
+
+        <label>Школа</label><br>
+        <input name="school" type="text" class="field" value="{{workersChildren.school}}"/><br><br>
+
+        <label>День рождения</label><br>
+        <input name="birthday" type="date" id="date" class="field" value="{{workersChildren.birthday}}"/><br><br>
+
+        <label>Номер рабочего</label><br>
+        <input name="id_Worker" type="number" class="field" value="{{workersChildren.id_Worker}}"/><br><br>
+
+
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="../workersChildren">К списку детей</a>
+    <script>
+        let date = new Date(("{{workersChildren.birthday}}"));
+        let year = date.toLocaleString("default", { year: "numeric" });
+        let month = date.toLocaleString("default", { month: "2-digit" });
+        let day = date.toLocaleString("default", { day: "2-digit" });
+        document.getElementById('date').value = `${year}-${month}-${day}`;
+    </script> 
+</body>

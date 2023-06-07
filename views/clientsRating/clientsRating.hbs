@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список рейтинга клиентов</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список рейтинга клиентов</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createClientRating">Добавить рейтинг клиента</a></p>
+    <input type="text" id="search" placeholder="Поиск по количеству заказов">
+    <table>
+        <thead><tr><th>Номер рейтинга клиента</th><th>Количество заказов</th><th>Рейтинг</th><th></th></tr></thead>
+        <tbody>
+        {{#each clientsRating}}
+            <tr class="elastic">
+                <td>{{this.id_ClientsRating}}</td>
+                <td>{{this.quantityOrders}}</td>
+                <td>{{this.rating}}</td>
+                <td>
+                    <a href="editClientRating/{{this.id_ClientsRating}}">Edit</a>
+                    <form action="deleteClientRating/{{this.id_ClientsRating}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete"/>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+<script src="/views/clientsRating/liveSearch.js"></script>
+</body>
+<html>

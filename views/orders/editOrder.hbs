@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование заказа</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование заказа</h1>
+
+     <form action="/editOrder" method="POST">
+        <input type="hidden" name="id_Orders" value="{{orders.id_Orders}}"/>
+
+        <label>Номер клиента</label><br>
+        <input name="id_Clients" type="number" class="field" value="{{orders.id_Clients}}"/><br><br>
+
+        <label>Номер обуви</label><br>
+        <input name="id_Shoes" type="number" class="field" value="{{orders.id_Shoes}}"/><br><br>
+
+        <label>Номер рабочего</label><br>
+        <input name="id_Workers" type="number" class="field" value="{{orders.id_Workers}}"/><br><br>
+
+        <label>Номер курьера</label><br>
+        <input name="id_Deliverymans" type="number" class="field" value="{{orders.id_Deliverymans}}"/><br><br>
+
+        <label>Дата заказа</label><br>
+        <input name="date_Order" type="date" id="dateOrder" value="{{orders.date_Order}}"/><br><br>
+
+        <label>Дата возврата</label><br>
+        <input name="date_Return" type="date" id="dateReturn" value="{{orders.date_Return}}"/><br><br>
+
+        <label>Цена</label><br>
+        <input name="Price" type="number" class="field" value="{{orders.Price}}"/><br><br>
+
+        <input type="submit" value="Отправить" />
+     </form>
+              <a href="../orders">К списку заказов</a>
+    <script>
+        let dateOrder = new Date(("{{orders.date_Order}}"));
+        let yearO = dateOrder.toLocaleString("default", { year: "numeric" });
+        let monthO = dateOrder.toLocaleString("default", { month: "2-digit" });
+        let dayO = dateOrder.toLocaleString("default", { day: "2-digit" });
+        document.getElementById('dateOrder').value = `${yearO}-${monthO}-${dayO}`;
+
+        let dateReturn = new Date(("{{orders.date_Return}}"));
+        let yearR = dateReturn.toLocaleString("default", { year: "numeric" });
+        let monthR = dateReturn.toLocaleString("default", { month: "2-digit" });
+        let dayR = dateReturn.toLocaleString("default", { day: "2-digit" });
+        document.getElementById('dateReturn').value = `${yearR}-${monthR}-${dayR}`;
+    </script> 
+</body>

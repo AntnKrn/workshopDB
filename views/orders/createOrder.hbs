@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление заказ</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Добавление заказа</h1>
+     <form method="POST">
+
+        <label>Номер клиента</label><br>
+        <input name="id_Clients" type="number" class="field"/><br><br>
+
+        <label>Номер обуви</label><br>
+        <input name="id_Shoes" type="number" class="field"/><br><br>
+
+        <label>Номер работника</label><br>
+        <input name="id_Workers" type="number" class="field"/><br><br>
+
+        <label>Номер курьера</label><br>
+        <input name="id_Deliverymans" type="number" class="field"/><br><br>
+
+        <label>Дата заказа</label><br>
+        <input name="date_Order" type="date" class="field"/><br><br>
+
+        <label>Дата возврата</label><br>
+        <input name="date_Return" type="date" class="field"/><br><br>
+
+        <label>Цена</label><br>
+        <input name="Price" type="number" class="field" min="1"/><br><br>
+
+        <input type="submit" value="Добавить" />
+     </form>
+         <a href="orders">К списку заказов</a>
+     
+</body>
+<html>

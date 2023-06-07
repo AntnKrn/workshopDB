@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список информации о брендах</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список информации о брендах</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createBrand">Добавить информацию о бренде</a></p>
+    <input type="text" id="search" placeholder="Поиск по бренду">
+    <table>
+        <thead><tr><th>Номер бренда</th><th>Название бренда</th><th>Сайт</th><th></th></tr></thead>
+        <tbody>
+        {{#each brandInfo}}
+            <tr class="elastic">
+                <td>{{this.id_Brand}}</td>
+                <td>{{this.brandName}}</td>
+                <td>{{this.website}}</td>
+                <td>
+                    <a href="editBrand/{{this.id_Brand}}">Edit</a>
+                    <form action="deleteBrand/{{this.id_Brand}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete"/>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <script src="/views/brandInfo/liveSearch.js"></script>
+</body>
+<html>

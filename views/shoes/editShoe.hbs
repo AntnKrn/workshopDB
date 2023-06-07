@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование обуви</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование обуви</h1>
+     <form action="/editShoe" method="POST">
+        <input type="hidden" name="id_Shoe" value="{{shoes.id_Shoe}}"/>
+
+        <label>Номер бренда</label><br>
+        <input name="id_Brands" type="number" class="field" value="{{shoes.id_Brands}}"/><br><br>
+
+        <label>Материал</label><br>
+        <input name="material" type="text" class="field" value="{{shoes.material}}"/><br><br>
+
+        <label>Сезон</label><br>
+        <input name="season" type="text" class="field" value="{{shoes.season}}"/><br><br>
+
+        <label>Тип</label><br>
+        <input name="type" type="text" class="field" value="{{shoes.type}}"/><br><br>
+
+        <label>Гендер</label><br>
+        <input name="gender" type="text" value="{{shoes.gender}}"/><br><br>
+
+        <label>Состояние</label><br>
+        <input name="shoes_condition" type="text" value="{{shoes.shoes_condition}}"/><br><br>
+
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="../shoes">К списку обуви</a>
+</body>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список обуви</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список обуви</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createShoe">Добавить обувь</a></p>
+    <input type="text" id="search" placeholder="Поиск по бренду">
+    <table>
+        <thead><tr><th>Номер обуви</th><th>Название бренда</th><th>Материал</th><th>Сезон</th><th>Тип</th><th>Гендер</th><th>Состояние</th><th></th></tr></thead>
+        <tbody>
+        {{#each shoes}}
+            <tr class="elastic">
+                <td>{{this.id_Shoe}}</td>
+                <td>{{this.brandName}}</td>
+                <td>{{this.material}}</td>
+                <td>{{this.season}}</td>
+                <td>{{this.type}}</td>
+                <td>{{this.gender}}</td>
+                <td>{{this.shoes_condition}}</td>
+                <td>
+                    <a href="editShoe/{{this.id_Shoe}}">Edit</a>
+                    <form action="deleteShoe/{{this.id_Shoe}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete"/>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <script src="/views/shoes/liveSearch.js"></script>
+</body>
+<html>

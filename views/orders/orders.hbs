@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список заказов</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список заказов</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createOrder">Добавить заказ</a></p>
+    <input type="text" id="search" placeholder="Поиск по ФИО клиента">
+    <table>
+       <thead><tr class="main"><th>Номер заказа</th><th>ФИО клиента</th><th>Бренд обуви</th><th>ФИО рабочего</th><th>ФИО клиента</th><th>Дата заказа</th><th>Дата возврата</th><th>Цена</th><th></th></tr></thead>
+        <tbody>
+        {{#each orders}}
+            <tr class="elastic">
+                <td>{{this.id_Orders}}</td>
+                <td class="fullname">{{this.fullnameClients}}</td>
+                <td>{{this.brandName}}</td>
+                <td>{{this.fullnameWorker}}</td>
+                <td>{{this.fullnameDeliveryman}}</td>
+                <td class="date">{{this.date_Order}}</td>
+                <td class="date">{{this.date_Return}}</td>
+                <td>{{this.Price}}</td>
+                <td>
+                    <a href="editOrder/{{this.id_Orders}}" id="edit">Edit</a>
+                    <form action="deleteOrder/{{this.id_Orders}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete"/>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <script src="/views/orders/liveSearch.js"></script>
+</body>
+<html>

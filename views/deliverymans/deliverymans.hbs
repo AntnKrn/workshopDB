@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список курьеров</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список курьеров</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createDeliveryman">Добавить курьера</a></p>
+    <input type="text" id="search" placeholder="Поиск по ФИО">
+    <table>
+        <thead><tr><th>Номер курьера</th><th>ФИО</th><th>Номер телефона</th><th>Почта</th><th></th></tr></thead>
+        <tbody>
+        {{#each deliverymans}}
+            <tr class="elastic">
+                <td>{{this.id_Deliverysmans}}</td>
+                <td>{{this.fullname}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.email}}</td>
+                <td>
+                    <a href="editDeliveryman/{{this.id_Deliverysmans}}">Edit</a>
+                    <form action="deleteDeliveryman/{{this.id_Deliverysmans}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete" />
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <script src="/views/deliverymans/liveSearch.js"></script>
+</body>
+<html>

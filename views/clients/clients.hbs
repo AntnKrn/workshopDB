@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список клиентов</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список клиентов</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createClient">Добавить клиента</a></p>
+    <input type="text" id="search" placeholder="Поиск по ФИО">
+    <table>
+        <thead><tr><th>Номер клиента</th><th>ФИО</th><th>Номер телефона</th><th>Адресс</th><th>Почта</th><th>День рождения</th><th>ФИО родственника</th><th>Рейтинг</th><th></th></tr></thead>
+        <tbody>
+        {{#each clients}}
+            <tr class="elastic">
+                <td>{{this.id_Client}}</td>
+                <td>{{this.fullname}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.address}}</td>
+                <td>{{this.email}}</td>
+                <td class="date">{{this.birthday}}</td>
+                <td>{{this.fullnameRelative}}</td>
+                <td>{{this.rating}}</td>
+                <td>
+                    <a href="editClient/{{this.id_Client}}">Edit</a>
+                    <form action="deleteClients/{{this.id_Client}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete" />
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <script src="/views/clients/liveSearch.js"></script>
+    <script>
+        document.querySelectorAll('td.date').forEach(e => {
+            let date = new Date(e.textContent);
+            let year = date.toLocaleString("default", { year: "numeric" });
+            let month = date.toLocaleString("default", { month: "2-digit" });
+            let day = date.toLocaleString("default", { day: "2-digit" });
+            e.textContent = `${year}-${month}-${day}`;
+        });
+    </script>
+</body>
+<html>

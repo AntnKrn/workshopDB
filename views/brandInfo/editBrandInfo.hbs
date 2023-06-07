@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование информации о бренде</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование информации о бренде</h1>
+     <form action="/editBrand" method="POST">
+        <input type="hidden" name="id_Brand" value="{{brandInfo.id_Brand}}"/>
+
+        <label>Название бренда</label><br>
+        <input name="brandName" type="text" class="field" value="{{brandInfo.brandName}}"/><br><br>
+
+        <label>Сайт</label><br>
+        <input name="website" type="text" class="field" value="{{brandInfo.website}}"/><br><br>
+
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="../brandInfo">К списку информации о брендах</a>
+</body>

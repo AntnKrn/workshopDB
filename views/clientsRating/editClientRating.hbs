@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование рейтинга клиента</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование рейтинга клиента</h1>
+     <form action="/editClientRating" method="POST">
+        <input type="hidden" name="id_ClientsRating" value="{{clientsRating.id_ClientsRating}}"/>
+
+        <label>Количество заказов</label><br>
+        <input name="quantityOrders" type="number" class="field" value="{{clientsRating.quantityOrders}}"/><br><br>
+
+        <label>Рейтинг</label><br>
+        <input name="rating" type="number" class="field" value="{{clientsRating.rating}}"/><br><br>
+
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="../clientsRating">К списку рейтинга клиента</a>
+</body>

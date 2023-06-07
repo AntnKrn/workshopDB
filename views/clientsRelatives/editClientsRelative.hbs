@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование родственника</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h1>Редактирование родственника</h1>
+     <form action="/editClientsRelative" method="POST">
+        <input type="hidden" name="id_ClientsRelatives" value="{{clientsRelatives.id_ClientsRelatives}}"/>
+
+        <label>ФИО</label><br>
+        <input name="fullnameRelative" type="text" class="field" value="{{clientsRelatives.fullnameRelative}}"/><br><br>
+
+        <label>Номер телефона</label><br>
+        <input name="phoneNumber" type="text" class="field" value="{{clientsRelatives.phoneNumber}}"/><br><br>
+
+        <label>Тип</label><br>
+        <input name="type" type="text" class="field" value="{{clientsRelatives.type}}"/><br><br>
+
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="../clientsRelatives">К списку родственников</a>
+</body>

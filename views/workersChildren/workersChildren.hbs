@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список детей</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/tables.css">
+</head>
+<style>
+
+    .elastic.hide{
+        display: none;
+    }
+</style>
+<body>
+    <h1>Список детей</h1>
+    <p><a href="/">Главная страница</a></p>
+    <p><a href="createWorkersChild">Добавить ребенка</a></p>
+    <input type="text" id="search" placeholder="Поиск по ФИО">
+    <table>
+        <thead><tr><th>Номер ребенка</th><th>ФИО</th><th>Школа</th><th>День рождения</th><th>ФИО рабочего</th><th></th></tr></thead>
+        <tbody>
+        {{#each workersChildren}}
+            <tr class="elastic">
+                <td>{{this.id_WorkersChildren}}</td>
+                <td>{{this.fullname}}</td>
+                <td>{{this.school}}</td>
+                <td class="date">{{this.birthday}}</td>
+                <td>{{this.id_Worker}}</td>
+                <td>
+                    <a href="editWorkersChild/{{this.id_WorkersChildren}}">Edit</a>
+                    <form action="deleteWorkersChild/{{this.id_WorkersChildren}}" method="POST" style="display:inline;">
+                        <input type="submit" value="Delete" id="delete"/>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <script src="/views/workersChildren/liveSearch.js"></script>
+    <script>
+        document.querySelectorAll('td.date').forEach(e => {
+            let date = new Date(e.textContent);
+            let year = date.toLocaleString("default", { year: "numeric" });
+            let month = date.toLocaleString("default", { month: "2-digit" });
+            let day = date.toLocaleString("default", { day: "2-digit" });
+            e.textContent = `${year}-${month}-${day}`;
+        });
+    </script>
+</body>
+<html>
